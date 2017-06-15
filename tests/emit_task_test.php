@@ -2,7 +2,7 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once __DIR__ . '/../../../../../../../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../classes/task/emit_task.php';
 
 use \logstore_elasticsearch\task\emit_task;

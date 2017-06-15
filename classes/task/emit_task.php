@@ -4,7 +4,7 @@ namespace logstore_elasticsearch\task;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once __DIR__ . '/../../../../../../../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use \core\task\scheduled_task;
 use \logstore_elasticsearch\log\store;

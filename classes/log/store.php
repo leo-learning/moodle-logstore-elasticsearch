@@ -4,7 +4,7 @@ namespace logstore_elasticsearch\log;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once __DIR__ . '/../../../../../../../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use \core\event\base as event_base;
 use \tool_log\log\manager as log_manager;

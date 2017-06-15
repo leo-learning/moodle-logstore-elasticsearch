@@ -2,7 +2,7 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once __DIR__ . '/../../../../../../../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../classes/log/elasticsearch_controller.php';
 
 use \logstore_elasticsearch\log\elasticsearch_controller;
