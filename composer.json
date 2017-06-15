@@ -1,0 +1,25 @@
+{
+    "name": "mikemcgowan/moodle-elasticsearch",
+    "description": "Sends Moodle events as xAPI statements to Elasticsearch using library classes from the xAPI logstore plugin",
+    "homepage": "https://github.com/mikemcgowan/moodle-elasticsearch",
+    "autoload": {
+        "psr-4": {
+            "XREmitter\\": "../xapi/lib/emitter/src/",
+            "LogExpander\\": "../xapi/lib/expander/src/",
+            "MXTranslator\\": "../xapi/lib/translator/src/"
+        }
+    },
+    "require": {
+        "pimple/pimple": "3.0.2",
+        "elasticsearch/elasticsearch": "5.2.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.9"
+    },
+    "authors": [
+        {
+            "name": "Mike McGowan",
+            "email": "mike.mcgowan.75@gmail.com"
+        }
+    ]
+}

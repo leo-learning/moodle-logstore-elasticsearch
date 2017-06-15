@@ -1,0 +1,4 @@
+*.log
+composer.lock
+phpunit.xml
+vendor/
