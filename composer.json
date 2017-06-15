@@ -1,7 +1,7 @@
 {
-    "name": "leo-learning/moodle-logstore_elasticsearch",
+    "name": "leo-learning/moodle-logstore-elasticsearch",
     "description": "Sends Moodle events as xAPI statements to Elasticsearch using library classes from the xAPI logstore plugin",
-    "homepage": "https://github.com/leo-learning/moodle-logstore_elasticsearch",
+    "homepage": "https://github.com/leo-learning/moodle-logstore-elasticsearch",
     "autoload": {
         "psr-4": {
             "XREmitter\\": "../xapi/lib/emitter/src/",
