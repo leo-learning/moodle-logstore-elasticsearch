@@ -1,0 +1,118 @@
+diff --git a/moodle/Sniffs/Commenting/InlineCommentSniff.php b/moodle/Sniffs/Commenting/InlineCommentSniff.php
+index 12dfa69..848655e 100644
+--- a/moodle/Sniffs/Commenting/InlineCommentSniff.php
++++ b/moodle/Sniffs/Commenting/InlineCommentSniff.php
+@@ -68,6 +68,7 @@ class moodle_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
+         // If this is a function/class/interface doc block comment, skip it.
+         // We are only interested in inline doc block comments, which are
+         // not allowed.
++        /*
+         if ($tokens[$stackPtr]['code'] === T_DOC_COMMENT_OPEN_TAG) {
+             $nextToken = $phpcsFile->findNext(
+                 PHP_CodeSniffer_Tokens::$emptyTokens,
+@@ -203,6 +204,7 @@ class moodle_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
+                 $phpcsFile->addError($error, $stackPtr, 'DocBlock');
+             }
+         }//end if
++        */
+ 
+         if ($tokens[$stackPtr]['content']{0} === '#') {
+             $error = 'Perl-style comments are not allowed; use "// Comment." instead';
+@@ -376,11 +378,14 @@ class moodle_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
+         }
+ 
+         // Start with upper case, digit or 3-dots sequence.
++        /*
+         if (preg_match('!^([A-Z0-9]|\.{3})!', $commentText) === 0) {
+             $error = 'Inline comments must start with a capital letter, digit or 3-dots sequence';
+             $phpcsFile->addWarning($error, $topComment, 'NotCapital');
+         }
++        */
+ 
++        /*
+         // End with .!?
+         $commentCloser   = $commentText[(strlen($commentText) - 1)];
+         $acceptedClosers = array(
+@@ -400,6 +405,7 @@ class moodle_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
+             $data  = array($ender);
+             $phpcsFile->addWarning($error, $stackPtr, 'InvalidEndChar', $data);
+         }
++        */
+ 
+         // Finally, the line below the last comment cannot be empty if this inline
+         // comment is on a line by itself.
+diff --git a/moodle/Sniffs/Files/BoilerplateCommentSniff.php b/moodle/Sniffs/Files/BoilerplateCommentSniff.php
+index 9ea1870..b6dfe77 100644
+--- a/moodle/Sniffs/Files/BoilerplateCommentSniff.php
++++ b/moodle/Sniffs/Files/BoilerplateCommentSniff.php
+@@ -69,13 +69,14 @@ class moodle_Sniffs_Files_BoilerplateCommentSniff implements PHP_CodeSniffer_Sni
+             }
+         }
+ 
+-        if ($numnewlines > 0) {
++        if ($numnewlines > 1) {
+             $file->addError('The opening <?php tag must be followed by exactly one newline.',
+                     1, 'WrongWhitespace');
+             return;
+         }
+         $offset = $numnewlines + 1;
+ 
++        /*
+         // Now check the text of the comment.
+         foreach (self::$comment as $lineindex => $line) {
+             $tokenptr = $offset + $lineindex;
+@@ -94,5 +95,6 @@ class moodle_Sniffs_Files_BoilerplateCommentSniff implements PHP_CodeSniffer_Sni
+                         $tokenptr, 'WrongLine', array($lineindex + 1, $line));
+             }
+         }
++        */
+     }
+ }
+diff --git a/moodle/Sniffs/NamingConventions/ValidVariableNameSniff.php b/moodle/Sniffs/NamingConventions/ValidVariableNameSniff.php
+index 9e2b444..79c093e 100644
+--- a/moodle/Sniffs/NamingConventions/ValidVariableNameSniff.php
++++ b/moodle/Sniffs/NamingConventions/ValidVariableNameSniff.php
+@@ -56,11 +56,13 @@ class moodle_Sniffs_NamingConventions_ValidVariableNameSniff
+         }
+ 
+         // Find underscores in variable names (accepting $_foo for private vars).
++        /*
+         $pos = strpos($membername, '_');
+         if ($pos > 1) {
+             $error = "Member variable \"$membername\" must not contain underscores.";
+             $phpcsfile->addError($error, $stackptr);
+         }
++        */
+ 
+         // Must not be preceded by 'var' keyword.
+         $keyword = $phpcsfile->findPrevious(T_VAR, $stackptr);
+@@ -121,9 +123,11 @@ class moodle_Sniffs_NamingConventions_ValidVariableNameSniff
+             $phpcsfile->addError($error, $stackptr);
+         }
+ 
++        /*
+         if (strpos($varname, '_') !== false && !in_array($varname, self::$allowedglobals)) {
+             $error = "Variable \"$varname\" must not contain underscores.";
+             $phpcsfile->addError($error, $stackptr);
+         }
++        */
+     }
+ }
+diff --git a/moodle/Sniffs/PHP/IncludingFileSniff.php b/moodle/Sniffs/PHP/IncludingFileSniff.php
+index 2bab076..30852d3 100644
+--- a/moodle/Sniffs/PHP/IncludingFileSniff.php
++++ b/moodle/Sniffs/PHP/IncludingFileSniff.php
+@@ -35,11 +35,13 @@ class moodle_Sniffs_PHP_IncludingFileSniff implements PHP_CodeSniffer_Sniff {
+     public function process(PHP_CodeSniffer_File $file, $stackptr) {
+         $tokens = $file->getTokens();
+ 
++        /*
+         if ($tokens[$stackptr + 1]['code'] !== T_OPEN_PARENTHESIS) {
+             $error = '"%s" must be immediately followed by an open parenthesis';
+             $data  = array($tokens[$stackptr]['content']);
+             $file->addError($error, $stackptr, 'BracketsNotRequired', $data);
+         }
++        */
+ 
+         $incondition = (count($tokens[$stackptr]['conditions']) !== 0) ? true : false;
+ 

@@ -64,12 +64,12 @@ class emit_task_test extends advanced_testcase {
                     'origin', 'ip', 'realuserid'
                 ],
                 [
-                    1, '\core\event\course_viewed', 'core', 'viewed', 'course', '', '', 'r', 2, 21,
-                    50, 2, 2, 2, '', 0, 'N;', 1496925675, 'web', 'localhost', ''
+                    1, '\core\event\course_viewed', 'core', 'viewed', 'course', '', 0, 'r', 2, 21,
+                    50, 2, 2, 2, 0, 0, 'N;', 1496925675, 'web', 'localhost', 0
                 ],
                 [
-                    2, '\core\event\course_viewed', 'core', 'viewed', 'course', '', '', 'r', 2, 21,
-                    50, 2, 2, 2, '', 0, 'N;', 1496925676, 'web', 'localhost', ''
+                    2, '\core\event\course_viewed', 'core', 'viewed', 'course', '', 0, 'r', 2, 21,
+                    50, 2, 2, 2, 0, 0, 'N;', 1496925676, 'web', 'localhost', 0
                 ],
             ]
         ]));
@@ -172,12 +172,12 @@ class emit_task_test extends advanced_testcase {
                     'origin', 'ip', 'realuserid'
                 ],
                 [
-                    1, '\core\event\course_viewed', 'core', 'viewed', 'course', '', '', 'r', 2, 21,
-                    50, 2, 2, 2, '', 0, 'N;', 1496925675, 'web', 'localhost', ''
+                    1, '\core\event\course_viewed', 'core', 'viewed', 'course', '', 0, 'r', 2, 21,
+                    50, 2, 2, 2, 0, 0, 'N;', 1496925675, 'web', 'localhost', 0
                 ],
                 [
-                    2, '\core\event\course_viewed', 'core', 'viewed', 'course', '', '', 'r', 2, 21,
-                    50, 2, 2, 2, '', 0, 'N;', 1496925676, 'web', 'localhost', ''
+                    2, '\core\event\course_viewed', 'core', 'viewed', 'course', '', 0, 'r', 2, 21,
+                    50, 2, 2, 2, 0, 0, 'N;', 1496925676, 'web', 'localhost', 0
                 ],
             ]
         ]));

@@ -1,0 +1,62 @@
+language: php
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+
+php:
+    - 7.0
+    - 7.1
+
+env:
+    global:
+        - MOODLE_BRANCH=MOODLE_32_STABLE
+    matrix:
+        - DB=pgsql
+        - DB=mysqli
+
+before_install:
+    - phpenv config-rm xdebug.ini
+    - nvm install node
+    - cd ../..
+    - composer selfupdate
+    - composer create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci ^2
+    - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
+
+install:
+    # xAPI logstore plugin
+    - moodle-plugin-ci add-plugin xAPI-vle/moodle-logstore_xapi
+    - cd ~/build/moodle-plugin-ci-plugins/moodle-logstore_xapi
+    - git fetch --verbose --unshallow # necessary because add-plugin does git clone --depth 1
+    - git fetch --verbose --tags
+    - git checkout -b 2.0.0 v2.0.0
+    - composer install --no-interaction
+
+    # Elasticsearch logstore plugion
+    - cd ~/build/leo-learning/moodle-logstore-elasticsearch
+    - composer install --no-interaction
+
+    # install Moodle & plugins
+    - cd $TRAVIS_BUILD_DIR/../..
+    - moodle-plugin-ci install
+
+script:
+#   - moodle-plugin-ci phplint
+#   - moodle-plugin-ci phpcpd
+#   - moodle-plugin-ci phpmd
+#   - moodle-plugin-ci codechecker
+    - moodle-plugin-ci validate
+    - moodle-plugin-ci savepoints
+#   - moodle-plugin-ci mustache
+#   - moodle-plugin-ci grunt
+    - moodle-plugin-ci phpunit
+#   - moodle-plugin-ci behat
+
+    # run codechecker with the LEO tweaks to the coding style and without the vendor/ directory
+    - cd ~/build/ci/vendor/moodlehq/moodle-local_codechecker
+    - git apply ~/build/moodle/admin/tool/log/store/elasticsearch/codechecker.diff
+    - rm -rf ~/build/moodle/admin/tool/log/store/elasticsearch/vendor
+    - cd $TRAVIS_BUILD_DIR/../..
+    - moodle-plugin-ci codechecker

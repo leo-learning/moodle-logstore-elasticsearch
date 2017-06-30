@@ -1,5 +1,7 @@
 # Moodle logstore Elasticsearch
 
+[![Build Status](https://travis-ci.org/leo-learning/moodle-logstore-elasticsearch.svg?branch=master)](https://travis-ci.org/leo-learning/moodle-logstore-elasticsearch)
+
 Sends Moodle events as [xAPI](http://tincanapi.com/overview/) statements to [Elasticsearch](https://www.elastic.co/products/elasticsearch) using library classes from the [xAPI logstore plugin](https://github.com/xAPI-vle/moodle-logstore_xapi).
 
 Originally based on `v1.4.0` of the [xAPI logstore plugin](https://github.com/xAPI-vle/moodle-logstore_xapi).
