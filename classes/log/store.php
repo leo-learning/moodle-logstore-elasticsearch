@@ -94,9 +94,9 @@ class store implements log_writer {
             return [];
         }
 
-        /** @var translator_controller $translator_controller */
-        $translator_controller = $deps['translator_controller'];
-        $translator_events = $translator_controller->createEvents($moodle_events);
+        /** @var translator_controller $translator_ctrl */
+        $translator_ctrl = $deps['translator_controller'];
+        $translator_events = $translator_ctrl->createEvents($moodle_events);
         if (empty($translator_events)) {
             return [];
         }
@@ -108,16 +108,16 @@ class store implements log_writer {
             $event_batches = array_chunk($translator_events, $max_batch_size);
         }
 
-        /** @var elasticsearch_controller $elasticsearch_controller */
-        $elasticsearch_controller = $deps['elasticsearch_controller'];
-        $elasticsearch_results = [];
-        foreach ($event_batches as $translator_events_batch) {
-            $statements = $elasticsearch_controller->create_statements($translator_events_batch);
-            $results = $elasticsearch_controller->send_statements($statements);
-            $elasticsearch_results = array_merge($elasticsearch_results, $results);
+        /** @var elasticsearch_controller $elasticsearch_ctrl */
+        $elasticsearch_ctrl = $deps['elasticsearch_controller'];
+        $elasticsearch_res = [];
+        foreach ($event_batches as $events_batch) {
+            $statements = $elasticsearch_ctrl->create_statements($events_batch);
+            $results = $elasticsearch_ctrl->send_statements($statements);
+            $elasticsearch_res = array_merge($elasticsearch_res, $results);
         }
 
-        return $elasticsearch_results;
+        return $elasticsearch_res;
     }
 
     /**

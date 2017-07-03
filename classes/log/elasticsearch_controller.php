@@ -31,7 +31,8 @@ class elasticsearch_controller {
      */
     public function create_statements(array $events) {
         $statements = [];
-        foreach ($events as $index => $opts) {
+        $v = array_values($events);
+        foreach ($v as $opts) {
             $route = isset($opts['recipe']) ? $opts['recipe'] : '';
             if (isset($this->routes[$route])) {
                 $event = '\XREmitter\Events\\' . $this->routes[$route];

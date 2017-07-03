@@ -82,29 +82,24 @@ class emit_task_test extends advanced_testcase {
         $moodle_events = [[
             'event'    => $events[1],
             'sendmbox' => 0,
-            // etc
         ], [
             'event'    => $events[2],
             'sendmbox' => 0,
-            // etc
         ]];
-
         $translator_events = [[
             'user_id'     => 2,
             'user_name'   => 'Admin User',
             'source_url'  => 'http://moodle.org',
             'recipe'      => 'course_viewed',
             'course_url'  => 'http://localhost/course/view.php?id=2',
-            'course_name' => '001'
-            // etc
+            'course_name' => '001',
         ], [
             'user_id'     => 2,
             'user_name'   => 'Admin User',
             'source_url'  => 'http://moodle.org',
             'recipe'      => 'course_viewed',
             'course_url'  => 'http://localhost/course/view.php?id=2',
-            'course_name' => '001'
-            // etc
+            'course_name' => '001',
         ]];
 
         $statements = [
@@ -190,11 +185,9 @@ class emit_task_test extends advanced_testcase {
         $moodle_events = [[
             'event'    => $events[1],
             'sendmbox' => 0,
-            // etc
         ], [
             'event'    => $events[2],
             'sendmbox' => 0,
-            // etc
         ]];
 
         $translator_events = [[
@@ -204,7 +197,6 @@ class emit_task_test extends advanced_testcase {
             'recipe'      => 'course_viewed',
             'course_url'  => 'http://localhost/course/view.php?id=2',
             'course_name' => '001'
-            // etc
         ], [
             'user_id'     => 2,
             'user_name'   => 'Admin User',
@@ -212,7 +204,6 @@ class emit_task_test extends advanced_testcase {
             'recipe'      => 'course_viewed',
             'course_url'  => 'http://localhost/course/view.php?id=2',
             'course_name' => '001'
-            // etc
         ]];
 
         $statements = [

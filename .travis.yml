@@ -34,7 +34,7 @@ install:
     - git checkout -b 2.0.0 v2.0.0
     - composer install --no-interaction
 
-    # Elasticsearch logstore plugion
+    # Elasticsearch logstore plugin
     - cd ~/build/leo-learning/moodle-logstore-elasticsearch
     - composer install --no-interaction
 
@@ -43,20 +43,17 @@ install:
     - moodle-plugin-ci install
 
 script:
-#   - moodle-plugin-ci phplint
-#   - moodle-plugin-ci phpcpd
-#   - moodle-plugin-ci phpmd
-#   - moodle-plugin-ci codechecker
+    # with the vendor/ directory
     - moodle-plugin-ci validate
     - moodle-plugin-ci savepoints
-#   - moodle-plugin-ci mustache
-#   - moodle-plugin-ci grunt
     - moodle-plugin-ci phpunit
-#   - moodle-plugin-ci behat
 
-    # run codechecker with the LEO tweaks to the coding style and without the vendor/ directory
+    # without the vendor/ directory
     - cd ~/build/ci/vendor/moodlehq/moodle-local_codechecker
     - git apply ~/build/moodle/admin/tool/log/store/elasticsearch/codechecker.diff
     - rm -rf ~/build/moodle/admin/tool/log/store/elasticsearch/vendor
     - cd $TRAVIS_BUILD_DIR/../..
     - moodle-plugin-ci codechecker
+    - moodle-plugin-ci phplint
+    # moodle-plugin-ci phpcpd
+    - moodle-plugin-ci phpmd

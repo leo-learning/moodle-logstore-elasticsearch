@@ -381,7 +381,6 @@ class store_test extends advanced_testcase {
 
         $log_manager = Mockery::mock('\tool_log\log\manager');
         $store = new store($log_manager);
-        $course = $this->getDataGenerator()->create_course();
         $event = Mockery::mock('\core\event\course_viewed');
         $events = [$event];
 
@@ -402,7 +401,6 @@ class store_test extends advanced_testcase {
         ]];
 
         $statements = [[], ];
-        $responses = [[], ];
 
         $container = new Container();
         $container['max_batch_size'] = 1;

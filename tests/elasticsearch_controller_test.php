@@ -72,7 +72,6 @@ class elasticsearch_controller_test extends advanced_testcase {
      * tests send_statements() returns an empty array if client has no 'index' method
      */
     public function test_send_statements_returns_empty_array_if_client_has_no_index_method() {
-        $client = Mockery::mock('\Elasticsearch\Client');
         $statements = ['statement1', 'statement2', 'statement3'];
         $controller = new elasticsearch_controller(new \stdClass(), []);
         $responses = $controller->send_statements($statements);
