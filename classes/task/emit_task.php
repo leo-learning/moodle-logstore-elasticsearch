@@ -20,7 +20,8 @@ class emit_task extends scheduled_task {
     }
 
     /**
-     * @param Container $deps
+     * @param Container $deps dependencies
+     * @return void
      */
     public function execute(Container $deps = null) {
         global $DB;

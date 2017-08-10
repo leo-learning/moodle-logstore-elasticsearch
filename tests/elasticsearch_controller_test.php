@@ -11,6 +11,7 @@ class elasticsearch_controller_test extends advanced_testcase {
 
     /**
      * tearDown
+     * @return void
      */
     protected function tearDown() {
         Mockery::close();
@@ -18,6 +19,7 @@ class elasticsearch_controller_test extends advanced_testcase {
 
     /**
      * tests create_statements() creates a statement per event
+     * @return void
      */
     public function test_create_statements_creates_statement_per_event() {
         $client = Mockery::mock('\Elasticsearch\Client');
@@ -55,6 +57,7 @@ class elasticsearch_controller_test extends advanced_testcase {
 
     /**
      * tests send_statements() invoked once per statement
+     * @return void
      */
     public function test_send_statements_indexes_every_statement() {
         $client = Mockery::mock('\Elasticsearch\Client');
@@ -70,6 +73,7 @@ class elasticsearch_controller_test extends advanced_testcase {
 
     /**
      * tests send_statements() returns an empty array if client has no 'index' method
+     * @return void
      */
     public function test_send_statements_returns_empty_array_if_client_has_no_index_method() {
         $statements = ['statement1', 'statement2', 'statement3'];
@@ -80,6 +84,7 @@ class elasticsearch_controller_test extends advanced_testcase {
 
     /**
      * tests send_statements() returns statement along with null response on exception
+     * @return void
      */
     public function test_send_statements_returns_null_response_on_exception() {
         $client = Mockery::mock('\Elasticsearch\Client');

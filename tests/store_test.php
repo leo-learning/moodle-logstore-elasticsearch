@@ -13,6 +13,7 @@ class store_test extends advanced_testcase {
 
     /**
      * setUp
+     * @return void
      */
     protected function setUp() {
         $this->resetAfterTest();
@@ -20,6 +21,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tearDown
+     * @return void
      */
     protected function tearDown() {
         Mockery::close();
@@ -27,6 +29,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests process_events() called with no events
+     * @return void
      */
     public function test_process_events_called_with_no_events() {
         $log_manager = Mockery::mock('\tool_log\log\manager');
@@ -54,6 +57,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests process_events() called with one event that fails to 'translate'
+     * @return void
      */
     public function test_process_events_called_with_one_event_failing_to_translate() {
         $log_manager = Mockery::mock('\tool_log\log\manager');
@@ -89,6 +93,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests process_events() called with one event
+     * @return void
      */
     public function test_process_events_with_one_event() {
         $log_manager = Mockery::mock('\tool_log\log\manager');
@@ -146,6 +151,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests process_events() correctly batches statements
+     * @return void
      */
     public function test_process_events_batching() {
         $log_manager = Mockery::mock('\tool_log\log\manager');
@@ -210,6 +216,7 @@ class store_test extends advanced_testcase {
 
     /**
      * test save_unsuccessfully_indexed_events()
+     * @return void
      */
     public function test_save_unsuccessfully_indexed_events() {
         global $DB;
@@ -285,6 +292,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests is_logging()
+     * @return void
      */
     public function test_is_logging() {
         $log_manager = Mockery::mock('\tool_log\log\manager');
@@ -295,6 +303,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests the 'ext key' assumed by the store is what it's supposed to be
+     * @return void
      */
     public function test_ext_key() {
         $event = new Event();
@@ -324,6 +333,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests is_event_ignored()
+     * @return void
      */
     public function test_is_event_ignored_returns_true_when_event_unsupported() {
         $course = $this->getDataGenerator()->create_course();
@@ -341,6 +351,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests is_event_ignored()
+     * @return void
      */
     public function test_is_event_ignored_returns_false_when_event_supported() {
         $course = $this->getDataGenerator()->create_course();
@@ -354,6 +365,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests insert_event_entries() in background mode
+     * @return void
      */
     public function test_insert_event_entries_in_background_mode() {
         global $DB;
@@ -375,6 +387,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests insert_event_entries() not in background mode
+     * @return void
      */
     public function test_insert_event_entries_not_in_background_mode() {
         global $DB;
@@ -429,6 +442,7 @@ class store_test extends advanced_testcase {
 
     /**
      * tests get_dependencies()
+     * @return void
      */
     public function test_get_dependencies() {
         $log_manager = Mockery::mock('\tool_log\log\manager');

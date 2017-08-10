@@ -17,8 +17,8 @@ class elasticsearch_controller {
     protected $routes;
 
     /**
-     * @param \Elasticsearch\Client $client
-     * @parma array $routes
+     * @param \Elasticsearch\Client $client client
+     * @param array                 $routes routes
      */
     public function __construct($client, array $routes) {
         $this->client = $client;
@@ -26,7 +26,7 @@ class elasticsearch_controller {
     }
 
     /**
-     * @param array $events
+     * @param array $events events
      * @return array
      */
     public function create_statements(array $events) {
@@ -45,7 +45,7 @@ class elasticsearch_controller {
     }
 
     /**
-     * @param array $statements
+     * @param array $statements statements
      * @return array
      */
     public function send_statements(array $statements) {

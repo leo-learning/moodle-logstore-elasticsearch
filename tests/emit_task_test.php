@@ -13,6 +13,7 @@ class emit_task_test extends advanced_testcase {
 
     /**
      * setUp
+     * @return void
      */
     protected function setUp() {
         $this->resetAfterTest();
@@ -20,6 +21,7 @@ class emit_task_test extends advanced_testcase {
 
     /**
      * tearDown
+     * @return void
      */
     protected function tearDown() {
         Mockery::close();
@@ -27,6 +29,7 @@ class emit_task_test extends advanced_testcase {
 
     /**
      * tests execute() called with no events in the database
+     * @return void
      */
     public function test_execute_with_no_events() {
         $container = new Container();
@@ -52,6 +55,7 @@ class emit_task_test extends advanced_testcase {
 
     /**
      * tests execute() called with some events in the database
+     * @return void
      */
     public function test_execute_with_some_events() {
         global $DB;
@@ -155,6 +159,7 @@ class emit_task_test extends advanced_testcase {
 
     /**
      * tests execute() only deletes successfully sent statements from the database (in batch mode)
+     * @return void
      */
     public function test_execute_when_some_statements_fail_to_send() {
         global $DB;
@@ -256,6 +261,7 @@ class emit_task_test extends advanced_testcase {
 
     /**
      * tests get_name()
+     * @return void
      */
     public function test_get_name() {
         $emit_task = new emit_task();

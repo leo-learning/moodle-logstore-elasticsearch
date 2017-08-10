@@ -35,7 +35,7 @@ class store implements log_writer {
 
     /**
      * @see \tool_log\helper\store
-     * @param log_manager $manager
+     * @param log_manager $manager manager
      */
     public function __construct(log_manager $manager) {
         $this->helper_setup($manager);
@@ -43,7 +43,7 @@ class store implements log_writer {
 
     /**
      * @see \tool_log\helper\buffered_writer
-     * @param event_base $event
+     * @param event_base $event event
      * @return boolean
      */
     protected function is_event_ignored(event_base $event) {
@@ -55,8 +55,9 @@ class store implements log_writer {
 
     /**
      * @see \tool_log\helper\buffered_writer
-     * @param array $events raw event data
-     * @param Container $deps
+     * @param array     $events raw event data
+     * @param Container $deps   dependencies
+     * @return void
      */
     protected function insert_event_entries(array $events, Container $deps = null) {
         global $DB;
@@ -78,8 +79,8 @@ class store implements log_writer {
     }
 
     /**
-     * @param array $events
-     * @param Container $deps
+     * @param array     $events events
+     * @param Container $deps   dependencies
      * @return array
      */
     public function process_events(array $events, Container $deps) {
@@ -121,7 +122,8 @@ class store implements log_writer {
     }
 
     /**
-     * @param array $results
+     * @param array $results results
+     * @return void
      */
     public function save_unsuccessfully_indexed_events(array $results) {
         global $DB;
@@ -139,7 +141,8 @@ class store implements log_writer {
     }
 
     /**
-     * @param array $results
+     * @param array $results results
+     * @return void
      */
     public function delete_successfully_indexed_events(array $results) {
         global $DB;
@@ -171,7 +174,7 @@ class store implements log_writer {
     }
 
     /**
-     * @param array $statement
+     * @param array $statement statement
      * @return array
      */
     public function event_from_statement(array $statement) {
@@ -213,7 +216,7 @@ class store implements log_writer {
 
     /**
      * allows protected method to which this delegates to be tested
-     * @param event_base $event
+     * @param event_base $event event
      * @throws \coding_exception
      * @return boolean
      */
@@ -226,8 +229,8 @@ class store implements log_writer {
 
     /**
      * allows protected method to which this delegates to be tested
-     * @param array $events
-     * @param Container $deps
+     * @param array     $events events
+     * @param Container $deps   dependencies
      * @throws \coding_exception
      * @return boolean
      */
