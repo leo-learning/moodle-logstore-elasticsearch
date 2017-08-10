@@ -204,7 +204,7 @@ class store implements log_writer {
             global $CFG;
             $elasticsearch_client = ClientBuilder::create()->setHosts([
                 $this->get_config('endpoint', 'elasticsearch'),
-            ])->build();
+            ])->allowBadJSONSerialization()->build();
             return new elasticsearch_controller(
                 $elasticsearch_client,
                 xapi_controller::$routes
